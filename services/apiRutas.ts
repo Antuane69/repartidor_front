@@ -1,4 +1,5 @@
 export const API_RUTAS = {
+  me: `user/me`,
 	passwordReset: `forgot-password-api`,
   oauthToken: `oauth/token`,
   oauthTokenRefresh: `oauth/token/refresh`,

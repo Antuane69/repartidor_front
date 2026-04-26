@@ -8,7 +8,7 @@ import { FloatButton, Flex, Button } from 'antd';
 import { SettingOutlined, PlusSquareTwoTone, FilterTwoTone, QuestionCircleTwoTone, FileTextOutlined } from '@ant-design/icons';
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 import BugReportIcon from '@mui/icons-material/BugReport';
-import { openManualForCurrentPath } from "../utils/abrirManualUsuario";
+import { openManualForCurrentPath } from "../services/abrirManualUsuario";
 import validarPermisoUsuario from "../hooks/validarPermisoUsuario";
 import validarAccesoAlSistema from '../hooks/validarAccesoAlSistema';
 import '../css/EstilosBotonFlotante.css';

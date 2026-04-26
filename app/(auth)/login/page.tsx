@@ -3,12 +3,16 @@
 import { Button, Card, Form, Input, message } from 'antd';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
-import axiosRequest from '../../../utils/axiosRequest';
+import axiosRequest from '../../../services/axiosRequest';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/store';
+import { getUsuarioConectado } from '@/features/administracion/usuarios/api';
 
 export default function LoginPage() {
+  const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
 
-  const onFinish = async (values: any) => {
+  const onFinish = async (values: { email: string; password: string }) => {
     try {
       const res = await axiosRequest('POST', 'login', values);
 
@@ -28,10 +32,18 @@ export default function LoginPage() {
 
       message.success('Login correcto');
 
+      const usuarioConectado = await dispatch(getUsuarioConectado()).unwrap();
+      console.log('USER ME:', usuarioConectado.usuario);
+
       router.push('/dashboard');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.log('ERROR COMPLETO:', error);
-      console.log('DATA:', error.response?.data); // 👈 ESTE ES EL IMPORTANTE
+
+      if (error && typeof error === 'object' && 'response' in error) {
+        const errorConResponse = error as { response?: { data?: unknown } };
+        console.log('DATA:', errorConResponse.response?.data);
+      }
+
       message.error('Error en login');
     }
   };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { UploadOutlined } from "@ant-design/icons";
 import { Upload, Button } from "antd";
 import type { UploadProps } from "antd";
-import AlertaErrorToast from '../utils/AlertaErrorToast';
+import AlertaErrorToast from '../services/AlertaErrorToast';
 
 type SubirImagenProps = {
   value?: string; // Valor inicial (puede ser string o undefined)

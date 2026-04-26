@@ -6,10 +6,11 @@ import React from 'react';
 import { Button, Tooltip} from 'antd';
 import { PlusCircleOutlined } from '@ant-design/icons';
 
-export default function BotonCrear({permiso = true, vistaCelular = false, onClick}: {
+export default function BotonCrear({permiso = true, vistaCelular = false, onClick, textoBotonCrearProp = "Añadir"}: {
   permiso: boolean;
   vistaCelular?: boolean | null;
   onClick: () => void;
+  textoBotonCrearProp?: string;
 }) {
 
   return (
@@ -21,7 +22,7 @@ export default function BotonCrear({permiso = true, vistaCelular = false, onClic
             size="middle" 
             onClick={onClick}
           >
-            <PlusCircleOutlined />{!vistaCelular ? "Añadir" : null} 
+            <PlusCircleOutlined />{!vistaCelular ? textoBotonCrearProp : null} 
           </Button>
         </Tooltip>
       ) : ""}
